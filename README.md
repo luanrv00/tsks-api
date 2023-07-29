@@ -34,6 +34,7 @@ next steps.
       "tsk": "t",
       "context": "inbox",
       "status": "todo/doing/done",
+      "sync": 0,
       "created_at": "<date>",
       "updated_at": "<date>"
     }
@@ -50,7 +51,8 @@ next steps.
   "tsk": {
     "tsk": "t",
     "context": "inbox",
-    "status": "todo/doing/done"
+    "status": "todo/doing/done",
+    "sync": 0
   }
 }
 ```
@@ -69,6 +71,7 @@ next steps.
     "tsk": "t",
     "context": "inbox",
     "status": "todo/doing/done",
+    "sync": 0,
     "created_at": "<date>",
     "updated_at": "<date>"
   }
@@ -84,7 +87,8 @@ next steps.
   "tsk": {
     "tsk": "t",
     "context": "inbox",
-    "status": "todo/doing/done"
+    "status": "todo/doing/done",
+    "sync": 0,
   }
 }
 ```
@@ -103,6 +107,7 @@ next steps.
     "tsk": "t",
     "context": "inbox",
     "status": "todo/doing/done",
+    "sync": 0,
     "created_at": "<date>",
     "updated_at": "<date>"
   }
