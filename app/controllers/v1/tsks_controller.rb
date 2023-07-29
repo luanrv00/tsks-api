@@ -15,9 +15,9 @@ module V1
 
       if user
         tsks = user.tsks.all
-        render json: {ok: true, tsks: tsks}, status: :ok
+        return render json: {ok: true, tsks: tsks}, status: :ok
       else
-        render json: {ok: false, message: "403 Forbidden"}, status: :forbidden
+        return render json: {ok: false, message: "403 Forbidden"}, status: :forbidden
       end
     end
 
@@ -42,10 +42,11 @@ module V1
 
       if user
         tsk = user.tsks.build tsk_params
+        tsk.sync = 1
         # TODO: fix "password can't be blank" 422 error
         begin
           if tsk.save
-            return render json: {ok: true, tsk: @user.tsks.last}, status: :created
+            return render json: {ok: true, tsk: user.tsks.last}, status: :created
           else
             return render json: {ok: false,
                                 message: "400 Bad Request"},
@@ -83,6 +84,7 @@ module V1
       if user
         if tsk
           begin
+            tsk.sync = 1
             if tsk.update tsk_params
               return render json: {ok: true, tsk: tsk}, status: :ok
             end
@@ -127,7 +129,7 @@ module V1
     private
 
     def tsk_params
-      params.require(:tsk).permit(:tsk, :context, :status, :created_at, :updated_at)
+      params.require(:tsk).permit(:tsk, :context, :status, :sync, :created_at, :updated_at)
     end
   end
 end
