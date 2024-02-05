@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-# TODO: implement PUT test cases (plan from gist)# TODO: 
+# TODO: implement PUT test cases (plan from gist)
 RSpec.describe "Tsks", type: :request do
   let(:auth_token) {
     "Bearer eyJhbGciOiJub25lIn0.eyJlbWFpbCI6InJlZ2lzdGVyZWRAYXBpLmNvbSJ9."
@@ -30,14 +30,14 @@ RSpec.describe "Tsks", type: :request do
         expect(response.status).to eq 401
       end
 
-      it "returns not ok" do
-        parsed_body = JSON.parse response.body
-        expect(parsed_body["ok"]).to eq false
-      end
-
       it "returns error message" do
         parsed_body = JSON.parse response.body
         expect(parsed_body["message"]).to eq "401 Unauthorized"
+      end
+
+      it "returns not ok" do
+        parsed_body = JSON.parse response.body
+        expect(parsed_body["ok"]).to eq false
       end
     end
 
@@ -58,14 +58,14 @@ RSpec.describe "Tsks", type: :request do
         expect(response.status).to eq 403
       end
 
-      it "returns not ok" do
-        parsed_body = JSON.parse response.body
-        expect(parsed_body["ok"]).to eq false
-      end
-
       it "returns error message" do
         parsed_body = JSON.parse response.body
         expect(parsed_body["message"]).to eq "403 Forbidden"
+      end
+
+      it "returns not ok" do
+        parsed_body = JSON.parse response.body
+        expect(parsed_body["ok"]).to eq false
       end
     end
 
@@ -84,6 +84,10 @@ RSpec.describe "Tsks", type: :request do
 
       it "returns status code 200" do
         expect(response.status).to eq 200
+      end
+
+      it "returns success message 200" do
+        expect(parsed_body["message"]).to eq "200 Success"
       end
 
       it "returns ok" do
@@ -111,14 +115,14 @@ RSpec.describe "Tsks", type: :request do
         expect(response.status).to eq 401
       end
 
-      it "returns not ok" do
-        parsed_body = JSON.parse response.body
-        expect(parsed_body["ok"]).to eq false
-      end
-
       it "returns error message" do
         parsed_body = JSON.parse response.body
         expect(parsed_body["message"]).to eq "401 Unauthorized"
+      end
+
+      it "returns not ok" do
+        parsed_body = JSON.parse response.body
+        expect(parsed_body["ok"]).to eq false
       end
     end
 

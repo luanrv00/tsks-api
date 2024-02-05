@@ -15,14 +15,14 @@ RSpec.describe "Signup", type: :request do
         expect(response.status).to eq 400
       end
 
-      it "returns not ok" do
-        parsed_body = JSON.parse response.body
-        expect(parsed_body["ok"]).to eq false
-      end
-
       it "returns error message" do
         parsed_body = JSON.parse response.body
         expect(parsed_body["message"]).to eq "400 Bad Request"
+      end
+
+      it "returns not ok" do
+        parsed_body = JSON.parse response.body
+        expect(parsed_body["ok"]).to eq false
       end
     end
 
@@ -35,14 +35,14 @@ RSpec.describe "Signup", type: :request do
         expect(response.status).to eq 400
       end
 
-      it "returns not ok" do
-        parsed_body = JSON.parse response.body
-        expect(parsed_body["ok"]).to eq false
-      end
-
       it "returns error message" do
         parsed_body = JSON.parse response.body
         expect(parsed_body["message"]).to eq "400 Bad Request"
+      end
+
+      it "returns not ok" do
+        parsed_body = JSON.parse response.body
+        expect(parsed_body["ok"]).to eq false
       end
     end
 
@@ -55,14 +55,14 @@ RSpec.describe "Signup", type: :request do
         expect(response.status).to eq 400
       end
 
-      it "returns not ok" do
-        parsed_body = JSON.parse response.body
-        expect(parsed_body["ok"]).to eq false
-      end
-
       it "returns error message" do
         parsed_body = JSON.parse response.body
         expect(parsed_body["message"]).to eq "400 Bad Request"
+      end
+
+      it "returns not ok" do
+        parsed_body = JSON.parse response.body
+        expect(parsed_body["ok"]).to eq false
       end
     end
 
@@ -85,14 +85,14 @@ RSpec.describe "Signup", type: :request do
         expect(response.status).to eq 409
       end
 
-      it "returns not ok" do
-        parsed_body = JSON.parse response.body
-        expect(parsed_body["ok"]).to eq false
-      end
-
       it "returns error message" do
         parsed_body = JSON.parse response.body
         expect(parsed_body["message"]).to eq "409 Conflict"
+      end
+
+      it "returns not ok" do
+        parsed_body = JSON.parse response.body
+        expect(parsed_body["ok"]).to eq false
       end
     end
 
@@ -107,15 +107,19 @@ RSpec.describe "Signup", type: :request do
         expect(response.status).to eq 201
       end
 
+      it "returns error message" do
+        expect(parsed_body["message"]).to eq "201 Created"
+      end
+
       it "returns ok" do
         parsed_body = JSON.parse response.body
         expect(parsed_body["ok"]).to eq true
       end
 
+      # TODO: expect(parsed_body["user"]).to eq <user data structure>
       it "returns user" do
         parsed_body = JSON.parse response.body
         expect(parsed_body).to include "user"
-        # TODO: expect(parsed_body["user"]).to eq user data structure
       end
 
       it "saves authtentication token" do
